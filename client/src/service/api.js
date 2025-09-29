@@ -1,19 +1,28 @@
-import axios from 'axios';
+import axios from "axios";
 
-const url = 'http://localhost:8000';
+const url = "http://localhost:8000";
 
 export const authenticateLogin = async (user) => {
-    try {
-        return await axios.post(`${url}/login`, user)
-    } catch (error) {
-        console.log('Error while calling login API: ', error);
-    }
-}
+  try {
+    return await axios.post(`${url}/login`, user);
+  } catch (error) {
+    console.log("Error while calling login API: ", error);
+  }
+};
 
 export const authenticateSignup = async (user) => {
-    try {
-        return await axios.post(`${url}/signup`, user)
-    } catch (error) {
-        console.log('Error while calling Signup API: ', error);
-    }
-}
+  try {
+    return await axios.post(`${url}/signup`, user);
+  } catch (error) {
+    console.log("Error while calling Signup API: ", error);
+  }
+};
+
+export const payUsingPaytm = async (payload) => {
+  try {
+    let response = await axios.post(`${url}/payment`, payload);
+    return response.data;
+  } catch (error) {
+    console.log("Error while calling paytm API: ", error);
+  }
+};
